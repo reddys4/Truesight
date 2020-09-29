@@ -1,0 +1,57 @@
+cnmlw-bl860c-20:/ # bdf
+Filesystem          kbytes    used   avail %used Mounted on
+/dev/vg00/lvol3    1048576  446248  597704   43% /
+/dev/vg00/lvol1    1572864  536768 1028064   34% /stand
+/dev/vg01/lvol1    262012928 169577800 86663148   66% /work
+/dev/vg00/lvol8    75497472 21369128 53709432   28% /var
+/dev/vg00/lvol9    4194304 2871216 1240482   70% /var/adm/sw
+/dev/vg00/lvol7    11534336 6699200 4797504   58% /usr
+/dev/vg00/lvol11   104857600 78459169 25676314   75% /u01
+/dev/vg00/lvol4    5242880  284120 4921488    5% /tmp
+/dev/vg00/lvol6    10485760 5701104 4748008   55% /opt
+/dev/vg00/lvol12   3145728 1133935 1886122   38% /opt/BMC/PATROL
+/dev/vg00/lvol5     524288  404512  119216   77% /home
+/dev/vg00/lvol10   8388608   19036 7846481    0% /.secure
+cnmlw-bl860c-20:/ #
+cnmlw-bl860c-20:/ # netstat -in
+Name      Mtu  Network         Address         Ipkts              Ierrs Opkts              Oerrs Coll
+lo0      32808 127.0.0.0       127.0.0.1       15814106           0     15814112           0     0
+lan0      1500 10.134.82.0     10.134.83.55    731446510          0     546452519          0     0
+lan900    1500 172.17.202.0    172.17.202.232  387484408          0     275151461          0     0
+cnmlw-bl860c-20:/ #
+cnmlw-bl860c-20:/ # lanscan
+Hardware Station        Crd Hdw   Net-Interface  NM  MAC       HP-DLPI DLPI
+Path     Address        In# State NamePPA        ID  Type      Support Mjr#
+0/0/0/3/0/0/0 0x2C27D7A1524A 0   UP    lan0 snap0     1   ETHER     Yes     119
+0/0/0/3/0/0/1 0x2C27D7A1524E 1   UP    lan1 snap1     2   ETHER     Yes     119
+LinkAgg0 0x2C27D7A15252 900 UP    lan900 snap900 6   ETHER     Yes     119
+LinkAgg1 0x000000000000 901 DOWN  lan901 snap901 7   ETHER     Yes     119
+LinkAgg2 0x000000000000 902 DOWN  lan902 snap902 8   ETHER     Yes     119
+LinkAgg3 0x000000000000 903 DOWN  lan903 snap903 9   ETHER     Yes     119
+LinkAgg4 0x000000000000 904 DOWN  lan904 snap904 10  ETHER     Yes     119
+cnmlw-bl860c-20:/ #
+cnmlw-bl860c-20:/ # ioscan -fnNC disk
+Class     I  H/W Path  Driver S/W State   H/W Type     Description
+===================================================================
+disk     20  64000/0xfa00/0x2  esdisk   CLAIMED     DEVICE       HP      HSV450
+                      /dev/disk/disk20      /dev/disk/disk20_p2   /dev/rdisk/disk20     /dev/rdisk/disk20_p2
+                      /dev/disk/disk20_p1   /dev/disk/disk20_p3   /dev/rdisk/disk20_p1  /dev/rdisk/disk20_p3
+disk     21  64000/0xfa00/0x3  esdisk   CLAIMED     DEVICE       HP      HSV450
+                      /dev/disk/disk21      /dev/rdisk/disk21     /dev/rdisk/oradata01
+disk     22  64000/0xfa00/0x4  esdisk   CLAIMED     DEVICE       HP      HSV450
+                      /dev/disk/disk22      /dev/rdisk/disk22     /dev/rdisk/oradata02
+disk     23  64000/0xfa00/0x5  esdisk   CLAIMED     DEVICE       HP      HSV450
+                      /dev/disk/disk23       /dev/rdisk/disk23      /dev/rdisk/oraflash01
+disk     24  64000/0xfa00/0x6  esdisk   CLAIMED     DEVICE       HP      HSV450
+                      /dev/disk/disk24   /dev/rdisk/disk24
+cnmlw-bl860c-20:/ #
+cnmlw-bl860c-20:/ #  setboot
+Primary bootpath : 0/0/0/7/0/0/0.0x50001fe1502197ca.0x4001000000000000 (/dev/rdisk/disk20)
+HA Alternate bootpath :
+Alternate bootpath :
+
+Autoboot is ON (enabled)
+Hyperthreading : ON
+               : ON (next boot)
+
+cnmlw-bl860c-20:/ #
